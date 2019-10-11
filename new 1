@@ -1,0 +1,131 @@
+using System;
+
+namespace Berechnungen
+{
+    class Program
+    {
+       
+
+        static void Main(string[] args)
+        {
+            //Variabel deklarierung
+            double r;                   //r=radius  
+            double a;                   //a= Rechteckseite
+            double b;                   //b= Rechteckseite
+            int berechnung;
+            string berechnungsart;
+
+
+             
+
+            do
+            {
+            Console.WriteLine("");
+            Console.WriteLine("Kreisberechnung:     \"1\"");
+            Console.WriteLine("Rechtecksberechnung: \"2\"");
+            Console.WriteLine("Dreicksberechnung:   \"3\"");
+            Console.WriteLine("T-Profil:            \"4\"");
+            Console.WriteLine("\"0\" zum beenden");
+            Console.WriteLine("");
+            Console.Write("Bitte Geometrisches Objekt auswählen: ");
+         
+                berechnung = int.Parse(Console.ReadLine());
+                Console.WriteLine("");
+                // Anfang der Kreisberechnungen 
+                if (berechnung == 1)
+                {
+                    Console.WriteLine("1 für Flächenberechnung !");
+                    Console.WriteLine("2 für Umfang !");
+                    Console.Write("Eingabe: ");
+                    berechnungsart = Console.ReadLine();
+                    if (berechnungsart == "1")
+                    {
+                        Console.Write("Radius in m: ");
+                        r = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Der Flächeninhalt beträgt: " + Program.kreisBerechnungFläche(r) + "m^2");
+                    }
+                    else if (berechnungsart == "2")
+                    {
+                        Console.Write("Radius in m: ");
+                        r = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Der Kreisumfang beträgt: " + Program.kreisBerechnungUmfang(r) + "m");
+                    }
+                }
+                // Ende der Kreisberechnungen
+
+                // Anfang Rechtecksberechnung
+                else if (berechnung == 2)
+                {
+                    Console.WriteLine("1 für Flächenberechnung !");
+                    Console.WriteLine("2 für Umfang !");
+                    Console.Write("Eingabe: ");
+                    berechnungsart = Console.ReadLine();
+                    if (berechnungsart == "1")
+                    {
+                        Console.Write("Lange Seite in m: ");
+                        a = double.Parse(Console.ReadLine());
+                        Console.Write("Kurze Seite in m: ");
+                        b = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Der Flächeninhalt beträgt: " + Program.rechtecksBerechnungFläche(a, b) + "m^2");
+                    }
+                    else if (berechnungsart == "2")
+                    {
+                        Console.Write("Lange Seite in m: ");
+                        a = double.Parse(Console.ReadLine());
+                        Console.Write("Kurze Seite in m: ");
+                        b = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Der Umfang beträgt: " + Program.rechtecksBerechnungUmfang(a, b) + "m");
+                    }
+                }
+                // Ende Rechtecksberechnung
+                else if (berechnung == 3)
+                {
+                    Console.WriteLine("1 für Flächenberechnung !");
+                    Console.WriteLine("2 für Umfang !");
+                }
+                else if (berechnung == 4)
+                {
+
+                }
+                else if (berechnung == 0)
+                {
+                    Console.WriteLine("Wird beendent...");
+                }
+                else Console.WriteLine("Ungültige eingabe");
+            } while (berechnung >= 1 & berechnung <= 4);
+
+     Console.ReadKey();
+        }
+
+        public static double kreisBerechnungFläche(double r)
+        {
+            double fe= (Math.PI) * (Math.Pow(r, 2));
+            fe =  Math.Round(fe, 2);
+            return fe;
+        }
+        public static double kreisBerechnungUmfang(double r)
+        {
+            Console.Write("Radius eingeben in m: ");
+            r = double.Parse(Console.ReadLine());
+            Console.WriteLine("Der Umfang beträgt: " + Program.kreisBerechnungUmfang(r) + "m");
+
+
+            double fe = (2*Math.PI) * r ;
+            fe = Math.Round(fe, 2);
+            return fe;
+        }
+
+        public static double rechtecksBerechnungFläche(double a, double b)
+        {
+            double fe;
+            fe = a * b;
+            return fe;
+        }
+        public static double rechtecksBerechnungUmfang(double a, double b)
+        {
+            double fe;
+            fe = (2*a+2*b);
+            return fe;
+        }
+    }
+}
